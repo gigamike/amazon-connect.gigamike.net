@@ -33,21 +33,22 @@
             <td>Last Name</td>
             <td>Email</td>
             <td>Mobile No.</td>
+            <td width="2%">View</td>
             <td width="2%">Edit</td>
             <td width="2%">Delete</td>
           </tr>
       </thead>
       <tbody>
-          @foreach($users as $user)
+          @foreach($customers as $customer)
           <tr>
-              <td>{{$user->id}}</td>
-              <td>{{$user->first_name}}</td>
-              <td>{{$user->last_name}}</td>
-              <td>{{$user->email}}</td>
-              <td>{{$user->mobile_no}}</td>
-              <td><a href="{{ route('customers.edit', $user->id)}}" class="btn btn-primary">Edit</a></td>
+              <td>{{$customer->id}}</td>
+              <td>{{$customer->first_name}}</td>
+              <td>{{$customer->last_name}}</td>
+              <td>{{$customer->email}}</td>
+              <td>{{$customer->mobile_no}}</td>
+              <td><a href="{{ route('customers.edit', $customer->id)}}" class="btn btn-primary">Edit</a></td>
               <td>
-                  <form action="{{ route('customers.destroy', $user->id)}}" method="post">
+                  <form action="{{ route('customers.destroy', $customer->id)}}" method="post">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger" type="submit">Delete</button>

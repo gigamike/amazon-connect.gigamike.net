@@ -15,9 +15,9 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        $users = Customer::all();
+        $customers = Customer::all();
 
-        return view('customers.index', compact('users'));
+        return view('customers.index', compact('customers'));
     }
 
     /**
@@ -67,7 +67,9 @@ class CustomersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+
+        return view('customers.edit', compact('customer'));
     }
 
     /**

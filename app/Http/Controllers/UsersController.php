@@ -306,6 +306,18 @@ class UsersController extends Controller
             $user = Auth::user();
             
             $contactId = $request['contactId'];
+
+            $contactLog = ContactLogs::where('contact_id', $contactId)->first();
+            if ($contactLog) {
+                $customer = Customer::where('contact_id', $contactLog->customer_id)->first();
+                if ($customer) {
+                    echo json_encode([
+                        'successful' => true,
+                        'url' => "/customers/" . $customer->id . "/edit",
+                    ]);
+                    return;
+                }
+            }
             
             echo json_encode(['successful' => true]);
             return;
@@ -322,8 +334,19 @@ class UsersController extends Controller
 
             $contactId = $request['contactId'];
 
+            $contactLog = ContactLogs::where('contact_id', $contactId)->first();
+            if ($contactLog) {
+                $customer = Customer::where('contact_id', $contactLog->customer_id)->first();
+                if ($customer) {
+                    echo json_encode([
+                        'successful' => true,
+                        'customer' => $customer,
+                    ]);
+                    return;
+                }
+            }
 
-            echo json_encode(['successful' => true]);
+            echo json_encode(['successful' => false]);
             return;
         }
 
