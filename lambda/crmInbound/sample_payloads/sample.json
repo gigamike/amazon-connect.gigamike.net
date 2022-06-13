@@ -1,0 +1,46 @@
+{
+    "Details":
+    {
+        "ContactData":
+        {
+            "Attributes":
+            {
+                "Customer Number": "+61431041497",
+                "Dialed Number": "+611800861285"
+            },
+            "Channel": "VOICE",
+            "ContactId": "88f0f029-301c-4bfb-9360-85c08209ccb7",
+            "CustomerEndpoint":
+            {
+                "Address": "+61431041497",
+                "Type": "TELEPHONE_NUMBER"
+            },
+            "CustomerId": null,
+            "Description": null,
+            "InitialContactId": "88f0f029-301c-4bfb-9360-85c08209ccb7",
+            "InitiationMethod": "INBOUND",
+            "InstanceARN": "arn:aws:connect:ap-southeast-2:667541373966:instance/4baf5c17-a37c-4b90-b4b9-3623bcf40411",
+            "LanguageCode": "en-US",
+            "MediaStreams":
+            {
+                "Customer":
+                {
+                    "Audio": null
+                }
+            },
+            "Name": null,
+            "PreviousContactId": "88f0f029-301c-4bfb-9360-85c08209ccb7",
+            "Queue": null,
+            "References":
+            {},
+            "SystemEndpoint":
+            {
+                "Address": "+611800861285",
+                "Type": "TELEPHONE_NUMBER"
+            }
+        },
+        "Parameters":
+        {}
+    },
+    "Name": "ContactFlowEvent"
+}

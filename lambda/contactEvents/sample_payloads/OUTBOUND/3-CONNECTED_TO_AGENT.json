@@ -1,0 +1,33 @@
+{
+    "version": "0",
+    "id": "1a307aa8-bf20-b656-eb9f-052b521489d1",
+    "detail-type": "Amazon Connect Contact Event",
+    "source": "aws.connect",
+    "account": "667541373966",
+    "time": "2022-02-23T00:33:41Z",
+    "region": "ap-southeast-2",
+    "resources": [
+        "arn:aws:connect:ap-southeast-2:667541373966:instance/4baf5c17-a37c-4b90-b4b9-3623bcf40411",
+        "arn:aws:connect:ap-southeast-2:667541373966:instance/4baf5c17-a37c-4b90-b4b9-3623bcf40411/contact/ed156474-b2f8-4d94-ab37-b9f6d7240419"
+    ],
+    "detail":
+    {
+        "initiationTimestamp": "2022-02-23T00:33:16.230Z",
+        "contactId": "ed156474-b2f8-4d94-ab37-b9f6d7240419",
+        "channel": "VOICE",
+        "instanceArn": "arn:aws:connect:ap-southeast-2:667541373966:instance/4baf5c17-a37c-4b90-b4b9-3623bcf40411",
+        "initiationMethod": "API",
+        "eventType": "CONNECTED_TO_AGENT",
+        "agentInfo":
+        {
+            "agentArn": "arn:aws:connect:ap-southeast-2:667541373966:instance/4baf5c17-a37c-4b90-b4b9-3623bcf40411/agent/d1b410ef-8e83-44e9-88a5-6f8ca2967a7f",
+            "connectedToAgentTimestamp": "2022-02-23T00:33:41.599Z"
+        },
+        "queueInfo":
+        {
+            "queueType": "STANDARD",
+            "queueArn": "arn:aws:connect:ap-southeast-2:667541373966:instance/4baf5c17-a37c-4b90-b4b9-3623bcf40411/queue/c7e48a12-bf61-44f9-946a-b6fadbf6d963",
+            "enqueueTimestamp": "2022-02-23T00:33:27.496Z"
+        }
+    }
+}

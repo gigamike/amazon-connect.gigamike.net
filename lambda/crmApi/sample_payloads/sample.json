@@ -1,0 +1,48 @@
+{
+    "Details":
+    {
+        "ContactData":
+        {
+            "Attributes":
+            {},
+            "Channel": "VOICE",
+            "ContactId": "a5c3d952-b97f-4dfa-8794-58909208cca3",
+            "CustomerEndpoint":
+            {
+                "Address": "+16507468678",
+                "Type": "TELEPHONE_NUMBER"
+            },
+            "CustomerId": null,
+            "Description": null,
+            "InitialContactId": "a5c3d952-b97f-4dfa-8794-58909208cca3",
+            "InitiationMethod": "API",
+            "InstanceARN": "arn:aws:connect:ap-southeast-2:667541373966:instance/4baf5c17-a37c-4b90-b4b9-3623bcf40411",
+            "LanguageCode": "en-US",
+            "MediaStreams":
+            {
+                "Customer":
+                {
+                    "Audio": null
+                }
+            },
+            "Name": null,
+            "PreviousContactId": "a5c3d952-b97f-4dfa-8794-58909208cca3",
+            "Queue":
+            {
+                "ARN": "arn:aws:connect:ap-southeast-2:667541373966:instance/4baf5c17-a37c-4b90-b4b9-3623bcf40411/queue/c1a6ce66-23e7-4c76-abcf-ca03affcd2db",
+                "Name": "QUEUE_PLAY_DEFAULT",
+                "OutboundCallerId": null
+            },
+            "References":
+            {},
+            "SystemEndpoint":
+            {
+                "Address": "anonymous",
+                "Type": "TELEPHONE_NUMBER"
+            }
+        },
+        "Parameters":
+        {}
+    },
+    "Name": "ContactFlowEvent"
+}

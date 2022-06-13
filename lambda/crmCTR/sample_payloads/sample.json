@@ -1,0 +1,20 @@
+{
+    "Records": [
+    {
+        "kinesis":
+        {
+            "kinesisSchemaVersion": "1.0",
+            "partitionKey": "1d3bb1ef-7b38-40fe-9c4f-36d323c7991a",
+            "sequenceNumber": "49627663626612016085115594214293420495267920010031398914",
+            "data": "eyJBV1NBY2NvdW50SWQiOiI2Njc1NDEzNzM5NjYiLCJBV1NDb250YWN0VHJhY2VSZWNvcmRGb3JtYXRWZXJzaW9uIjoiMjAxNy0wMy0xMCIsIkFnZW50IjpudWxsLCJBZ2VudENvbm5lY3Rpb25BdHRlbXB0cyI6MCwiQW5zd2VyaW5nTWFjaGluZURldGVjdGlvblN0YXR1cyI6bnVsbCwiQXR0cmlidXRlcyI6e30sIkNhbXBhaWduIjp7IkNhbXBhaWduSWQiOm51bGx9LCJDaGFubmVsIjoiVk9JQ0UiLCJDb25uZWN0ZWRUb1N5c3RlbVRpbWVzdGFtcCI6bnVsbCwiQ29udGFjdERldGFpbHMiOnt9LCJDb250YWN0SWQiOiIxZDNiYjFlZi03YjM4LTQwZmUtOWM0Zi0zNmQzMjNjNzk5MWEiLCJDdXN0b21lckVuZHBvaW50Ijp7IkFkZHJlc3MiOiIrNjE0MDAwMDAwMDAiLCJUeXBlIjoiVEVMRVBIT05FX05VTUJFUiJ9LCJEaXNjb25uZWN0UmVhc29uIjoiQ1VTVE9NRVJfRElTQ09OTkVDVCIsIkRpc2Nvbm5lY3RUaW1lc3RhbXAiOiIyMDIyLTAzLTE1VDIzOjUxOjI2WiIsIkluaXRpYWxDb250YWN0SWQiOm51bGwsIkluaXRpYXRpb25NZXRob2QiOiJBUEkiLCJJbml0aWF0aW9uVGltZXN0YW1wIjoiMjAyMi0wMy0xNVQyMzo1MToxNFoiLCJJbnN0YW5jZUFSTiI6ImFybjphd3M6Y29ubmVjdDphcC1zb3V0aGVhc3QtMjo2Njc1NDEzNzM5NjY6aW5zdGFuY2UvNGJhZjVjMTctYTM3Yy00YjkwLWI0YjktMzYyM2JjZjQwNDExIiwiTGFzdFVwZGF0ZVRpbWVzdGFtcCI6IjIwMjItMDMtMTVUMjM6NTI6MzJaIiwiTWVkaWFTdHJlYW1zIjpbeyJUeXBlIjoiQVVESU8ifV0sIk5leHRDb250YWN0SWQiOm51bGwsIlByZXZpb3VzQ29udGFjdElkIjpudWxsLCJRdWV1ZSI6bnVsbCwiUmVjb3JkaW5nIjpudWxsLCJSZWNvcmRpbmdzIjpudWxsLCJSZWZlcmVuY2VzIjpbXSwiU2NoZWR1bGVkVGltZXN0YW1wIjpudWxsLCJTeXN0ZW1FbmRwb2ludCI6eyJBZGRyZXNzIjpudWxsLCJUeXBlIjoiVEVMRVBIT05FX05VTUJFUiJ9LCJUcmFuc2ZlckNvbXBsZXRlZFRpbWVzdGFtcCI6bnVsbCwiVHJhbnNmZXJyZWRUb0VuZHBvaW50IjpudWxsLCJWb2ljZUlkUmVzdWx0IjpudWxsfQ==",
+            "approximateArrivalTimestamp": 1647388353.415
+        },
+        "eventSource": "aws:kinesis",
+        "eventVersion": "1.0",
+        "eventID": "shardId-000000000000:49627663626612016085115594214293420495267920010031398914",
+        "eventName": "aws:kinesis:record",
+        "invokeIdentityArn": "arn:aws:iam::667541373966:role/service-role/crmCTR-role-0bphv0zw",
+        "awsRegion": "ap-southeast-2",
+        "eventSourceARN": "arn:aws:kinesis:ap-southeast-2:667541373966:stream/dev-movinghub-contact-trace-records"
+    }]
+}

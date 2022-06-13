@@ -1,0 +1,55 @@
+{
+    "Details":
+    {
+        "ContactData":
+        {
+            "Attributes":
+            {
+                "Customer Number": "+639086087306",
+                "Dialed Number": "+611800861285"
+            },
+            "Channel": "VOICE",
+            "ContactId": "08895154-4967-4d58-a1e9-877b700cdc67",
+            "CustomerEndpoint":
+            {
+                "Address": "+639086087306",
+                "Type": "TELEPHONE_NUMBER"
+            },
+            "CustomerId": null,
+            "Description": null,
+            "InitialContactId": "08895154-4967-4d58-a1e9-877b700cdc67",
+            "InitiationMethod": "OUTBOUND",
+            "InstanceARN": "arn:aws:connect:ap-southeast-2:667541373966:instance/4baf5c17-a37c-4b90-b4b9-3623bcf40411",
+            "LanguageCode": "en-US",
+            "MediaStreams":
+            {
+                "Customer":
+                {
+                    "Audio": null
+                }
+            },
+            "Name": null,
+            "PreviousContactId": "08895154-4967-4d58-a1e9-877b700cdc67",
+            "Queue":
+            {
+                "ARN": "arn:aws:connect:ap-southeast-2:667541373966:instance/4baf5c17-a37c-4b90-b4b9-3623bcf40411/queue/c7e48a12-bf61-44f9-946a-b6fadbf6d963",
+                "Name": "BasicQueue",
+                "OutboundCallerId":
+                {
+                    "Address": "+611800861285",
+                    "Type": "TELEPHONE_NUMBER"
+                }
+            },
+            "References":
+            {},
+            "SystemEndpoint":
+            {
+                "Address": "+611800861285",
+                "Type": "TELEPHONE_NUMBER"
+            }
+        },
+        "Parameters":
+        {}
+    },
+    "Name": "ContactFlowEvent"
+}

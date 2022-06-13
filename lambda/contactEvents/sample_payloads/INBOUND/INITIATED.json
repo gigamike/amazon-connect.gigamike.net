@@ -1,0 +1,22 @@
+{
+    "version": "0",
+    "id": "86ecc61c-37fb-b863-c096-4106c3cf81c7",
+    "detail-type": "Amazon Connect Contact Event",
+    "source": "aws.connect",
+    "account": "667541373966",
+    "time": "2021-12-15T23:48:50Z",
+    "region": "ap-southeast-2",
+    "resources": [
+        "arn:aws:connect:ap-southeast-2:667541373966:instance/4baf5c17-a37c-4b90-b4b9-3623bcf40411",
+        "arn:aws:connect:ap-southeast-2:667541373966:instance/4baf5c17-a37c-4b90-b4b9-3623bcf40411/contact/4d4ff114-b110-4be3-9d1c-c98039c1bf40"
+    ],
+    "detail":
+    {
+        "initiationTimestamp": "2021-12-15T23:48:50.403Z",
+        "contactId": "4d4ff114-b110-4be3-9d1c-c98039c1bf40",
+        "channel": "VOICE",
+        "instanceArn": "arn:aws:connect:ap-southeast-2:667541373966:instance/4baf5c17-a37c-4b90-b4b9-3623bcf40411",
+        "initiationMethod": "INBOUND",
+        "eventType": "INITIATED"
+    }
+}
