@@ -36,8 +36,7 @@
                         <div style="width: 320px !important; height: 200px !important;">
                             <div class="p-sm">
                                 <div style="height:200px">
-                                    <div class="full-height-scroll" id="ccpDisplayStatus">
-                                    </div>
+                                    <div class="full-height-scroll" id="ccpDisplayStatus"></div>
                                 </div>
                             </div>
                         </div>

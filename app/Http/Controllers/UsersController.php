@@ -319,11 +319,33 @@ class UsersController extends Controller
 
             $contactLog = ContactLogs::where('contact_id', $contactId)->first();
             if ($contactLog) {
-                $customer = Customer::where('contact_id', $contactLog->customer_id)->first();
+                $customer = Customer::where('id', $contactLog->customer_id)->first();
                 if ($customer) {
+                    $html = "<div class=\"card uper\">
+    <div class=\"card-body\">
+        <form>
+             <div>
+                <label>First Name:</label>
+                " . $customer->first_name . "
+            </div>
+            <div>
+                <label>Last Name:</label>
+                " . $customer->last_name . "
+            </div>
+            <div>
+                <label>Email:</label>
+                " . $customer->email . "
+            </div>
+            <div>
+                <label>Address:</label>
+                " . $customer->address . "
+            </div>
+        </form>
+    </div>
+</div>";
                     echo json_encode([
                         'successful' => true,
-                        'customer' => $customer,
+                        'html' => $html,
                     ]);
                     return;
                 }
