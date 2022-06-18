@@ -53,11 +53,17 @@ class ContactLogsController extends Controller
         $contactLogs = ContactLogs::create([
             'contact_id' => $request['contactId'],
             'customer_endpoint_address' => $request['customerEndpointAddress'],
-            'system_endpoint_address' => 'systemEndpointAddress',
+            'system_endpoint_address' => $request['systemEndpointAddress'],
             'customer_id' => $customer->id,
         ]);
 
-        return response()->json(['Contact logs created successfully.', $contactLogs]);
+        return response()->json([
+            'successful' => true,
+            'CustomerEndpointAddress' => $request['customerEndpointAddress'],
+            'SystemEndpointAddress' => $request['systemEndpointAddress'],
+            'ContactId' => $request['contactId'],
+            'CustomerFirstName' => $customer->first_name,
+        ]);
     }
 
     /**

@@ -81,8 +81,8 @@ class UsersController extends Controller
                     // 'DeskPhoneNumber' => '<string>',
                     'PhoneType' => 'SOFT_PHONE', // REQUIRED
                 ],
-                'RoutingProfileId' => '36b2b7bd-630d-481c-853e-e5e295f8b2b8', // REQUIRED
-                'SecurityProfileIds' => ['c4a4c478-3adb-46c0-a3b8-dfb442b4c49c'], // REQUIRED
+                'RoutingProfileId' => env('AWS_AMAZON_CONNECT_ROUTING_PROFILE_ID', null), // REQUIRED
+                'SecurityProfileIds' => [env('AWS_AMAZON_CONNECT_SECURITY_PROFILE_ID', null)], // REQUIRED
                 // 'Tags' => [],
                 'Username' => $request['email'], // REQUIRED // Use up to 64 characters, a-z, A-Z, 0-9, _ - . @
             ]);
@@ -172,26 +172,9 @@ class UsersController extends Controller
     {
         $user = Auth::user();
 
-        return view('users.window_open_amazon_connect_stream', compact('user'));
-    }
+        $amazonConnectInstanceURL = env('AWS_AMAZON_CONNECT_INSTANCE_URL', null);
 
-    public function ajaxAgentInit(Request $request)
-    {
-        if ($request->isMethod('post')) {
-            $user = Auth::user();
-
-            if ($request->session()->get('user_amazon_connect_ccp_init')) {
-                $request->session()->put('user_amazon_connect_ccp_init', true);
-
-                echo json_encode(['successful' => true]);
-                return;
-            }
-
-            $request->session()->put('key', 'value');
-        }
-
-        echo json_encode(['successful' => false]);
-        return;
+        return view('users.window_open_amazon_connect_stream', compact('user', 'amazonConnectInstanceURL'));
     }
 
     public function ajaxAgentStateChange(Request $request)
@@ -309,7 +292,7 @@ class UsersController extends Controller
 
             $contactLog = ContactLogs::where('contact_id', $contactId)->first();
             if ($contactLog) {
-                $customer = Customer::where('contact_id', $contactLog->customer_id)->first();
+                $customer = Customer::where('id', $contactLog->customer_id)->first();
                 if ($customer) {
                     echo json_encode([
                         'successful' => true,

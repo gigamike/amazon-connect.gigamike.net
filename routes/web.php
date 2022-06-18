@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\ContactUsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +20,12 @@ use App\Http\Controllers\CustomersController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resource('contactus', ContactUsController::class);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::post('logout', [UsersController::class, 'logout'])->name('logout');
 
 Route::resource('users', UsersController::class);

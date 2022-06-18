@@ -19,32 +19,6 @@
 <body id="mainBodyDiv">
     <div id="app">
         <main>
-            <style type="text/css">
-            .btn-circle.btn-lg {
-                width: 50px;
-                height: 25px;
-                padding: 2px 2px;
-                font-size: 10px;
-                line-height: 1.33;
-                border-radius: 25px;
-            }
-
-            .btn-record.btn-lg {
-                width: 50px;
-                height: 25px;
-                padding: 2px 2px;
-                font-size: 10px;
-                line-height: 1.33;
-                border-radius: 5px;
-            }
-
-            .btn-record-recording {
-                background-color: #B63737;
-                border-color: #B63737;
-                color: #fff;
-            }
-
-            </style>
             <div>
                 <span id="amazonConnectLoginMessage">
                     <div class="row">
@@ -59,7 +33,7 @@
                 <hr class="hr-line-solid" style="border-color:gray">
                 <div>
                     <div style="float:left;">
-                        <div style="width: 250px !important; height: 200px !important;">
+                        <div style="width: 320px !important; height: 200px !important;">
                             <div class="p-sm">
                                 <div style="height:200px">
                                     <div class="full-height-scroll" id="ccpDisplayStatus">
@@ -68,20 +42,6 @@
                             </div>
                         </div>
                     </div>
-                    <div style="float:left;">
-                        <center>
-                            <div class="m-t-sm">
-                                <button id="recordStatus" type="button" class="btn btn-record btn-lg"><i class="fa fa-circle" aria-hidden="true"></i> REC</button>
-                            </div>
-                            <div style="margin-top:50px">
-                                <button title="Pause Recording" disabled id="pauseRecordingBtn" type="button" class="btn btn-warning btn-circle btn-lg"><i class="fa fa-pause" aria-hidden="true"></i></button>
-                            </div>
-                            <div class="m-t-sm">
-                                <button title="Resume Recording" disabled id="resumeRecordingBtn" type="button" class="btn btn-success btn-circle btn-lg" style="background-color:#5cb85c;border-color: #4cae4c;"><i class="fa fa-play" aria-hidden="true"></i></button>
-                            </div>
-                        </center>
-                    </div>
-                    <div class="clearfix"></div>
                 </div>
             </div>
         </main>
@@ -92,12 +52,10 @@
     <script type="text/javascript">
     var noInformationAvailableTemplate = '<p>No Contact Information Available</p>';
 
-    var isInit = false;
-
     var currentContactId = null;
 
     var containerDiv = document.getElementById("container-div-amazon-connect");
-    var instanceURL = 'https://siklab.my.connect.aws/ccp-v2/softphone';
+    var instanceURL = '<?php echo $amazonConnectInstanceURL; ?>/ccp-v2/softphone';
 
     window.myCPP = window.myCPP || {};
 
@@ -214,12 +172,6 @@
                 // openNewWindow(contact.contactId);
 
                 currentContactId = contact.contactId;
-
-                // $('#stopRecordingBtn').prop("disabled", false);
-                $('#pauseRecordingBtn').prop("disabled", false);
-                $('#resumeRecordingBtn').prop("disabled", true);
-
-                $("#recordStatus").addClass('btn-record-recording');
             });
             contact.onMissed(function(contact) {
                 // Call was missed, didnt answer by agent and caller drop the call
@@ -240,24 +192,12 @@
                 //();
 
                 currentContactId = null;
-
-                // $('#stopRecordingBtn').prop("disabled", true);
-                $('#pauseRecordingBtn').prop("disabled", true);
-                $('#resumeRecordingBtn').prop("disabled", true);
-
-                $("#recordStatus").removeClass('btn-record-recording');
             });
             contact.onDestroy(function(contact) {
                 console.log("Contact Events onDestroy");
                 console.log(contact);
 
                 currentContactId = null;
-
-                // $('#stopRecordingBtn').prop("disabled", true);
-                $('#pauseRecordingBtn').prop("disabled", true);
-                $('#resumeRecordingBtn').prop("disabled", true);
-
-                $("#recordStatus").removeClass('btn-record-recording');
             });
             contact.onACW(function(contact) {
                 // Call After Call Work
@@ -268,12 +208,6 @@
                 //resizeMe();
 
                 currentContactId = null;
-
-                // $('#stopRecordingBtn').prop("disabled", true);
-                $('#pauseRecordingBtn').prop("disabled", true);
-                $('#resumeRecordingBtn').prop("disabled", true);
-
-                $("#recordStatus").removeClass('btn-record-recording');
             });
             contact.onConnected(function(contact) {
                 // Call Connected
@@ -282,12 +216,6 @@
                 openNewWindow(contact.contactId);
 
                 currentContactId = contact.contactId;
-
-                // $('#stopRecordingBtn').prop("disabled", false);
-                $('#pauseRecordingBtn').prop("disabled", false);
-                $('#resumeRecordingBtn').prop("disabled", true);
-
-                $("#recordStatus").addClass('btn-record-recording');
             });
             contact.onError(function(contact) {
                 console.log("Contact Events onError");
@@ -299,44 +227,6 @@
     }
 
     function stateChange(oldState, newState) {
-        // Everytime the CCP is closed, it always calls the state change and trigger init.
-        // We need to catch every init so CRM user wont refresh, we only refresh on first init as first action is to login
-        if (!isInit) {
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: "{{ url('ajaxAgentInit') }}",
-                type: 'POST',
-                dataType: 'json',
-                success: function(jObj) {
-                    if (jObj.successful) {
-                        isInit = true;
-
-                        $.ajax({
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            url: "{{ url('ajaxAgentStateChange') }}",
-                            type: 'POST',
-                            dataType: 'json',
-                            data: {
-                                oldState: oldState,
-                                newState: newState
-                            },
-                            success: function(jObj) {
-                                if (jObj.successful) {
-                                    if (window.opener != null && window.opener.location != null) {
-                                        window.opener.location.reload();
-                                    }
-                                }
-                            }
-                        });
-                    }
-                }
-            });
-        }
-
         // Offline
         // Training
         // Available
@@ -462,53 +352,6 @@
         });
 
         resizeMe();
-
-        $('#pauseRecordingBtn').click(function() {
-            $('#stopRecordingBtn').prop("disabled", true);
-            $('#pauseRecordingBtn').prop("disabled", true);
-            $('#resumeRecordingBtn').prop("disabled", false);
-
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: "{{ url('ajaxRecordingPause') }}",
-                type: 'POST',
-                dataType: 'json',
-                data: {
-                    contactId: currentContactId
-                },
-                success: function(jObj) {
-                    if (jObj.successful) {
-                        $("#recordStatus").removeClass('btn-record-recording');
-                    }
-                }
-            });
-        });
-
-        $('#resumeRecordingBtn').click(function() {
-            $('#stopRecordingBtn').prop("disabled", false);
-            $('#pauseRecordingBtn').prop("disabled", false);
-            $('#resumeRecordingBtn').prop("disabled", true);
-
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: "{{ url('ajaxRecordingResume') }}",
-                type: 'POST',
-                dataType: 'json',
-                data: {
-                    contactId: currentContactId,
-                    csrfmhub: $('#csrfheaderid').val()
-                },
-                success: function(jObj) {
-                    if (jObj.successful) {
-                        $("#recordStatus").addClass('btn-record-recording');
-                    }
-                }
-            });
-        });
     });
 
     </script>

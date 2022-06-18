@@ -24,7 +24,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -34,20 +34,22 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        
+                        @auth
+
                         <li class="nav-item">
                           <a class="nav-link active" aria-current="page" href="{{ url('/home') }}">Home</a>
                         </li>
-                        @auth
                         <?php if(isset(Auth::user()->role) == 'admin'): ?>
                         <li class="nav-item">
                           <a class="nav-link" href="{{ url('/users') }}"> <i class="fa-solid fa-users"></i> Users</a>
                         </li>
-                        @endauth
-                        <?php endif; ?>
                         <li class="nav-item">
                           <a class="nav-link" href="{{ url('/customers') }}"> <i class="fa-solid fa-user-group"></i> Customers</a>
                         </li>
-
+                        @endauth
+                        <?php endif; ?>
+                        
                         @auth
                         <?php if(isset(Auth::user()->role) == 'agent'): ?>
                         <li class="nav-item">
@@ -72,6 +74,10 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
+
+                            <li class="nav-item">
+                                <a href="{{ url('/contactus') }}" class="nav-link">Contact Us</a>
+                            </li>
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
